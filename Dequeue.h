@@ -47,17 +47,17 @@ public:
 		return *--it;
 	}
 
-	void		push( ConstReference value )
+	void		unshift( ConstReference value )
 	{
 		container_.insert( container_.begin(), value );
 	}
 
-	void		inject( ConstReference value )
+	void		push( ConstReference value )
 	{
 		container_.insert( container_.end(), value );
 	}
 
-	Value		pop( )
+	Value		shift( )
 	{
 		Value value;
 		typename Container::Iterator it;
@@ -68,7 +68,7 @@ public:
 		return value;
 	}
 
-	Value		eject( )
+	Value		pop( )
 	{
 		Value value;
 		typename Container::Iterator it;

@@ -174,5 +174,64 @@ LinkedList<T> &LinkedList<T>::operator=( const LinkedList &list )
 	return *this;	
 }
 
+template <typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::push( ConstReference value )
+{
+	return insert( end(), value );
+}
+
+template <typename T>
+typename LinkedList<T>::Value LinkedList<T>::pop( )
+{
+	Value value;
+	Iterator it;
+
+	it = end( );
+	value = *--it;
+	remove( it );
+	return value;
+}
+
+template <typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::unshift( ConstReference value )
+{
+	return insert( begin(), value );
+}
+
+template <typename T>
+typename LinkedList<T>::Value LinkedList<T>::shift( )
+{
+	Value value;
+	Iterator it;
+
+	it = begin( );
+	value = *it;
+	remove( it );
+	return value;
+}
+
+template <typename T>
+typename LinkedList<T>::Reference LinkedList<T>::first( )
+{
+	return *begin( );
+}
+
+template <typename T>
+typename LinkedList<T>::ConstReference LinkedList<T>::first( ) const
+{
+	return *begin( );
+}
+
+template <typename T>
+typename LinkedList<T>::Reference LinkedList<T>::last( )
+{
+	return *--end( );
+}
+
+template <typename T>
+typename LinkedList<T>::ConstReference LinkedList<T>::last( ) const
+{
+	return *--end( );
+}
 
 #endif

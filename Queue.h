@@ -31,12 +31,12 @@ public:
 		return *container_.begin( );
 	}
 
-	void		enqueue( ConstReference value )
+	void		push( ConstReference value )
 	{
 		container_.insert( container_.end(), value );
 	}
 
-	Value		dequeue( )
+	Value		pop( )
 	{
 		Value value;
 		typename Container::Iterator it;

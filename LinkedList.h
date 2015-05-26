@@ -83,6 +83,18 @@ public:
 
 	LinkedList	&operator=( const LinkedList &list );
 
+	Iterator	push( ConstReference value );
+	Value		pop( );
+	
+	Iterator	unshift( ConstReference value );
+	Value		shift( );
+
+	ConstReference	first( ) const;
+	ConstReference	last( ) const;
+
+	Reference	first( );
+	Reference	last( );
+
 private:
 	Size		size_;
 	Node		*begin_;
