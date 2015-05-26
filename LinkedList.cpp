@@ -124,8 +124,10 @@ typename LinkedList<T>::Iterator LinkedList<T>::insert( Iterator position, Input
 	Size i;
 	Iterator it;
 
+	it = insert( position, *iterator++ );
+	--count;
 	for ( i = 0; i < count; ++i ) {
-		it = insert( position++, *iterator++ );
+		insert( position, *iterator++ );
 	}
 	return it;
 }
