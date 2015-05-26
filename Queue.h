@@ -23,17 +23,23 @@ public:
 
 	ConstReference	peek( ) const
 	{
-		return *container_.begin( );
+		typename Container::Iterator it;
+
+		it = container_.end();
+		return *--it;
 	}
 
 	Reference	peek( )
 	{
-		return *container_.begin( );
+		typename Container::Iterator it;
+
+		it = container_.end();
+		return *--it;
 	}
 
 	void		push( ConstReference value )
 	{
-		container_.insert( container_.end(), value );
+		container_.insert( container_.begin(), value );
 	}
 
 	Value		pop( )
@@ -41,8 +47,8 @@ public:
 		Value value;
 		typename Container::Iterator it;
 
-		it = container_.begin( );
-		value = *it;
+		it = container_.end( );
+		value = *--it;
 		container_.remove( it );
 		return value;
 	}
