@@ -155,6 +155,7 @@ typename LinkedList<T>::Iterator LinkedList<T>::remove( Iterator position, Size 
 		Memory<Node>::destroy( node );
 		allocator_->deallocate( node );
 		--size_;
+		node = next;
 	}
 	return Iterator( next );
 }
