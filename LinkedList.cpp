@@ -162,12 +162,12 @@ typename LinkedList<T>::Iterator LinkedList<T>::remove( Iterator position, Size 
 template <typename T>
 LinkedList<T> &LinkedList<T>::operator=( const LinkedList &list )
 {
-	ConstIterator it, end;
+	ConstIterator it, end_it;
 
 	clear( );
 	it = list.begin( );
-	end = list.end( );
-	while ( it != end ) {
+	end_it = list.end( );
+	while ( it != end_it ) {
 		insert( end(), *it++ );
 	}
 

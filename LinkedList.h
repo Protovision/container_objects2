@@ -53,6 +53,7 @@ public:
 	public:
 		ConstIterator( ) : node_(NULL) {}
 		ConstIterator( const ConstIterator &iterator ) : node_(iterator.node_) {}
+		ConstIterator( const Iterator &iterator ) : node_(iterator.node_) {}
 		ConstIterator( const Node *node ) : node_(node) {}
 		ConstReference	operator*( ) const	{ return node_->value; }
 		ConstPointer	operator->( ) const	{ return &node_->value; }
