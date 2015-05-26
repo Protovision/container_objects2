@@ -91,7 +91,9 @@ typename Array<T>::Iterator Array<T>::remove( Iterator position, Size count )
 template <typename T>
 void Array<T>::clear( )
 {
-	Memory<T>::destroy( array_, size_ );
+	if ( array_ != NULL ) {
+		Memory<T>::destroy( array_, size_ );
+	}
 	size_ = 0;
 }
 
@@ -115,7 +117,7 @@ void Array<T>::reserve( Size size )
 
 	if ( size < capacity_ ) return;
 	newCapacity = nextPow2( size );
-	newArray = (Pointer)allocator_->allocate( capacity_ );
+	newArray = (Pointer)allocator_->allocate( newCapacity );
 	Memory<T>::move( newArray, array_, size_ );
 	allocator_->deallocate( array_ );
 	array_ = newArray;
@@ -125,9 +127,11 @@ void Array<T>::reserve( Size size )
 template <typename T>
 void Array<T>::resize( Size size )
 {
+	Size i;
+
 	reserve( size );
-	if ( size >size_ ) {
-		Memory<T>::construct( array_+size_, size-size_ );
+	if ( size > size_ ) {
+		Memory<T>::construct( array_+size_, typename Memory<T>::Value(), size-size_ );
 	} else if ( size < size_ ) {
 		Memory<T>::destroy( array_+size, size_-size );	
 	}
@@ -146,8 +150,8 @@ typename Array<T>::Value Array<T>::pop( )
 	Value value;
 	Iterator it;
 
-	it = end( )-1;
-	value = *it;
+	it = end( );
+	value = *--it;
 	remove( it );
 	return value;
 }
