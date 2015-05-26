@@ -97,4 +97,13 @@ typename SinglyLinkedList<T>::Value SinglyLinkedList<T>::shift( )
 	return value;
 }
 
+template <typename T>
+SinglyLinkedList<T>	&SinglyLinkedList<T>::operator=( const SinglyLinkedList &list )
+{
+	ConstIterator it;
 
+	for ( it = list.begin(); it != list.end(); ++it ) {
+		insert( end(), *it );
+	}
+	return *this;
+}
